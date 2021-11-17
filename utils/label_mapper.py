@@ -53,7 +53,7 @@ def build_dataset_dict_from_config(cfg: Dict) -> hfd.DatasetDict:
     load = cfg["load_dataset"]
     datadict = hfd.load_dataset(**load)
     # tokenizer
-    hf.AutoTokenizer.from_pretrained(**cfg["tokenizer"])
+    tokenizer = hf.AutoTokenizer.from_pretrained(**cfg["tokenizer"])  # noqa
     # map
     label_mapper = eval(cfg["column_map"]["label_mapper"])
     keep_colns = cfg["column_map"]["keep"]
