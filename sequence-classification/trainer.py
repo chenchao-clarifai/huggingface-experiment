@@ -7,7 +7,7 @@ import transformers as hf
 from ..utils.config import load_yaml
 from ..utils.dataset import build_dataset_dict_from_config
 
-DEVICE = "cuda:0"
+DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
 def load_dataset(cfg: Dict) -> hfd.DatastDict:
