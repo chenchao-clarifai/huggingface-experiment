@@ -1,1 +1,1 @@
-from . import dataset
+from . import config, dataset
