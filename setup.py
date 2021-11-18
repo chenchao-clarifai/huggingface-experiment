@@ -1,14 +1,19 @@
 from setuptools import find_packages, setup
 
+from hfe import __version__
+
 # load readme
 with open("README.md", "r") as f:
     long_description = f.read()
 
+# load requirements
 with open("requirements.txt", "r") as f:
     requirements = f.readlines()
 
+
 setup(
     name="huggingface-experiment",
+    version=__version__,
     packages=find_packages(exclude=["tests"]),
     long_description=long_description,
     long_description_content_type="text/markdown",
