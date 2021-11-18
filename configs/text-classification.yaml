@@ -22,7 +22,7 @@ model_config:
 
 trainer_config:
   num_train_epochs: 1
-  output_dir: .
+  output_dir: /tmp/huggingface-experiment
   do_eval: False
   do_train: True
   per_device_train_batch_size: 12
