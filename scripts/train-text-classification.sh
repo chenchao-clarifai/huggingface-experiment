@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python src/sequence_classification/trainer.py \
+python -m hfe.sequence_classification.trainer \
     --yaml_config_path $1
