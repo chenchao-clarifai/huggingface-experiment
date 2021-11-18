@@ -10,7 +10,7 @@ from ..utils.dataset import build_dataset_dict_from_config
 DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-def load_dataset(cfg: Dict) -> hfd.DatastDict:
+def load_dataset(cfg: Dict) -> hfd.DatasetDict:
     return build_dataset_dict_from_config(cfg)
 
 
@@ -46,8 +46,8 @@ def main(yaml_config_path: str) -> None:
     else:
         train_dataset = None
 
-    if "eval" in dataset_dict:
-        eval_dataset = dataset_dict["eval"]
+    if "test" in dataset_dict:
+        eval_dataset = dataset_dict["test"]
     else:
         eval_dataset = None
 

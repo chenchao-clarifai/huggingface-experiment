@@ -11,7 +11,7 @@ dataset_config:
     pretrained_model_name_or_path: bert-base-cased
   column_map:
     label_mapper: |
-      lambda ex: dict(labels=int(ex['stars'])-1, **(tokenizer('. '.join([ex['review_title'], ex['review_body']]))))
+      lambda ex, tokenizer: dict(labels=int(ex['stars'])-1, **(tokenizer('. '.join([ex['review_title'], ex['review_body']]))))
     keep:
       - labels
 
@@ -20,4 +20,7 @@ model_config:
   num_labels: 5
 
 trainer_config:
-  output_dir: /dev/null/
+  num_train_epochs: 0
+  output_dir: .
+  do_eval: False
+  do_train: False

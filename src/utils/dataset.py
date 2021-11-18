@@ -1,3 +1,4 @@
+from functools import partial
 from typing import Dict
 
 import datasets as hfd
@@ -39,7 +40,7 @@ def build_dataset_dict_from_config(cfg: Dict) -> hfd.DatasetDict:
       pretrained_model_name_or_path: bert-base-cased
     column_map:
       label_mapper: |
-        lambda ex: \
+        lambda ex, tokenizer: \
         dict(labels=int(ex['stars'])-1,
             **(tokenizer('. '.join([ex['review_title'],
             ex['review_body']]))))
@@ -56,6 +57,7 @@ def build_dataset_dict_from_config(cfg: Dict) -> hfd.DatasetDict:
     tokenizer = hf.AutoTokenizer.from_pretrained(**cfg["tokenizer"])  # noqa
     # map
     label_mapper = eval(cfg["column_map"]["label_mapper"])
+    label_mapper = partial(label_mapper, tokenizer=tokenizer)
     keep_colns = cfg["column_map"]["keep"]
     assert isinstance(keep_colns, (list, tuple, set))
     rm_col = [
