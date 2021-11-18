@@ -13,5 +13,5 @@ torchrun -m \
     --standalone \
     --nnodes=1 \
     --nproc_per_node=$NGPU \
-    hfe.sequence_classification.trainer \
+    hfe.sequence_classification.dist_trainer \
         --yaml_config_path $CONFIG
