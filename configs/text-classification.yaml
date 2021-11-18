@@ -12,7 +12,7 @@ dataset_config:
     max_length: 128
   column_map:
     label_mapper: |
-      lambda ex, tokenizer: dict(labels=int(ex['stars'])-1, **(tokenizer('. '.join([ex['review_title'], ex['review_body']]))))
+      lambda ex, tokenizer: dict(labels=int(ex['stars'])-1, **(tokenizer('. '.join([ex['review_title'], ex['review_body']], max_length=128, truncation=True))))
     keep:
       - labels
 
