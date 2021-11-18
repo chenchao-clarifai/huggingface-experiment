@@ -9,7 +9,7 @@ dataset_config:
     name: en
   tokenizer:
     pretrained_model_name_or_path: bert-base-cased
-    max_seq_length: 128
+    model_max_length: 128
   column_map:
     label_mapper: |
       lambda ex, tokenizer: dict(labels=int(ex['stars'])-1, **(tokenizer('. '.join([ex['review_title'], ex['review_body']]))))
