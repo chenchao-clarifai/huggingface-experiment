@@ -11,3 +11,8 @@ def test_trainer():
         main(config_path)
     except ZeroDivisionError:
         print("We are not doing train so it's ok.")
+
+
+def test_imports():
+    from ..utils.config import load_yaml  # noqa
+    from ..utils.dataset import build_dataset_dict_from_config  # noqa
