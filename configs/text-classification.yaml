@@ -22,5 +22,6 @@ model_config:
 trainer_config:
   num_train_epochs: 1
   output_dir: .
+  max_seq_length: 128
   do_eval: False
   do_train: True
